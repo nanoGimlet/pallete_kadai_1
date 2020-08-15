@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<dl>
+  <dt>機能要件<dt>
+  <dd>・ブログ記事が作成できる<dd>
+  <dd>・作成した記事を、閲覧/編集/削除<dd>
+  <dd>・ブログ記事にコメントが出来る<dd>
+  <dd>・コメントを編集、削除ができる<dd>
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  <dt>追記<dt>
+  <dd>Docker for Windows無事に環境構築できました。Windows特有で大文字小文字の判別ができないといったエラーはありましたが、管理者権限から設定を変更することで問題なさそうです。<dd>
+<dl>
