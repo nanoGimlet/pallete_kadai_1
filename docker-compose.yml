@@ -25,11 +25,12 @@ services:
       - db
     environment:
       PORT: 80
-      LAND: C.UTF-8
+      LANG: C.UTF-8
       RAILS_ENV: development
       DATABASE_HOST: "db"
       DATABASE_USER: "root"
       DATABASE_PASSWORD: "hogehoge"
 
 volumes:
+  cache:
   datastore: {}
