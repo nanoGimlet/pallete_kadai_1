@@ -2,14 +2,25 @@ class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
-    redirect_to article_path(@article)
+    if @comment.save
+      flash[:notice] = "Create Succesfully"
+      redirect_to article_path(@article)
+    else
+      render 'show'
+      flash.now[:notice] = "Create Failed"
+    end
   end
 
   def destroy
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
-    @comment.destroy
-    redirect_to article_path(@article)
+    if @comment.destroy
+      flash[:notice] = "Delete Succesfully"
+      redirect_to article_path(@article)
+    else
+      render 'show'
+      flash.now[:notice] = "Delete Failed"
+    end
   end
 
   private

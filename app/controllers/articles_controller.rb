@@ -21,12 +21,12 @@ class ArticlesController < ApplicationController
 
         # DBに登録できた場合
         if @article.save
-            # 記事ページに遷移する
+            flash[:notice] = "Create Succesfully"
             redirect_to @article
         #DBに登録できなかった場合
         else
-            # 作成ページに遷移する
             render 'new'
+            flash.now[:notice] = "Create Failed"
         end
     end
 
@@ -40,21 +40,25 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
         # DBに登録できた場合
         if @article.update(article_params)
-            # 記事ページに遷移する
+            flash[:notice] = "Update Succesfully"
             redirect_to @article
-            # DBに登録できなかった場合
+        # DBに登録できなかった場合
         else
-            # 編集ページに遷移する
             render 'edit'
+            flash.now[:notice] = "Update Failed" 
         end
     end
 
     # 記事の削除
     def destroy
         @article = Article.find(params[:id])
-        @article.destroy
-        
-        redirect_to articles_path
+        if @article.destroy
+            flash[:notice] = "Delete Succesfully"
+            redirect_to articles_path
+        else
+            render 'index'
+            flash.now[:notice] = "Delete Failed"
+        end
     end
     
     # コントローラパラメータの定義
