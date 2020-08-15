@@ -32,5 +32,4 @@ services:
       DATABASE_PASSWORD: "hogehoge"
 
 volumes:
-  cache:
   datastore: {}
