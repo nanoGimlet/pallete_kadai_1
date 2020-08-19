@@ -1,25 +1,41 @@
 class CommentsController < ApplicationController
+
+  def new
+    @comment = article.comments.new
+  end
+
   def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    @comment = article.comments.new(comment_params)
     if @comment.save
-      flash[:notice] = "Create Succesfully"
-      redirect_to article_path(@article)
+      flash[:success] = "コメントを投稿しました"
+      redirect_to article_path(article)
     else
       render 'show'
-      flash.now[:notice] = "Create Failed"
+      flash.now[:error] = "コメントを投稿できませんでした"
     end
   end
 
-  def destroy
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
-    if @comment.destroy
-      flash[:notice] = "Delete Succesfully"
-      redirect_to article_path(@article)
+  def edit
+  end
+
+  def update
+    if comment.update(comment_params)
+      flash[:success] = "コメントを更新しました"
+      redirect_to article_path(article)
     else
       render 'show'
-      flash.now[:notice] = "Delete Failed"
+      flash.now[:error] = "コメントを更新できませんでした"
+    end
+  end
+
+
+  def destroy
+    if comment.destroy
+      flash[:success] = "コメントを削除しました"
+      redirect_to article_path(article)
+    else
+      render 'show'
+      flash.now[:error] = "コメントを削除できませんでした"
     end
   end
 
@@ -27,4 +43,14 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:commenter, :body)
     end
+
+    def article
+      @article ||= Article.find(params[:article_id])
+    end
+    helper_method :article
+
+    def comment
+      @comment ||= article.comments.find(params[:id])
+    end
+    helper_method :comment
 end

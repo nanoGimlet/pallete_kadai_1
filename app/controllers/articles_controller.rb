@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
 
     # 記事の表示
     def show
-        @article = Article.find(params[:id])
     end
 
     # 記事の作成
@@ -21,50 +20,50 @@ class ArticlesController < ApplicationController
 
         # DBに登録できた場合
         if @article.save
-            flash[:notice] = "Create Succesfully"
+            flash[:success] = "記事を投稿しました"
             redirect_to @article
         #DBに登録できなかった場合
         else
             render 'new'
-            flash.now[:notice] = "Create Failed"
+            flash.now[:error] = "記事を投稿できませんでした"
         end
     end
 
     # 記事の編集
     def edit
-        @article = Article.find(params[:id])
     end
     
     # 記事の更新
     def update
-        @article = Article.find(params[:id])
         # DBに登録できた場合
-        if @article.update(article_params)
-            flash[:notice] = "Update Succesfully"
-            redirect_to @article
+        if article.update(article_params)
+            flash[:success] = "記事を更新しました"
+            redirect_to article
         # DBに登録できなかった場合
         else
             render 'edit'
-            flash.now[:notice] = "Update Failed" 
+            flash.now[:error] = "記事を更新できませんでした" 
         end
     end
 
     # 記事の削除
     def destroy
-        @article = Article.find(params[:id])
-        if @article.destroy
-            flash[:notice] = "Delete Succesfully"
+        if article.destroy
+            flash[:success] = "記事を削除しました"
             redirect_to articles_path
         else
             render 'index'
-            flash.now[:notice] = "Delete Failed"
+            flash.now[:error] = "記事を削除できませんでした"
         end
     end
     
-    # コントローラパラメータの定義
     private
         def article_params
             params.require(:article).permit(:title, :text)
         end
-    
+
+        def article
+            @article ||= Article.find(params[:id])
+        end
+        helper_method :article
 end

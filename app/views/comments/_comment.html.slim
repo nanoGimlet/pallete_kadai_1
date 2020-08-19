@@ -1,0 +1,10 @@
+p
+  | 発言者：
+  = comment.commenter
+p
+  | コメント：
+  = comment.body
+p
+  = link_to 'コメント編集', edit_article_comment_path(comment.article, comment)
+  | |
+  = link_to 'コメント削除', [comment.article, comment], method: :delete, data: { confirm: '本当にいいですか？' }

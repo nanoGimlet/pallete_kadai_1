@@ -1,0 +1,22 @@
+h1
+  | 記事一覧
+table
+  tr
+    th
+      | タイトル
+    th
+      | 本文
+    th[colspan="2"]
+    = link_to '新しい記事を作成', new_article_path
+  - @articles.each do |article|
+    tr
+      td
+        = article.title
+      td
+        = article.text
+      td
+        = link_to '選択', article_path(article)
+      td
+        = link_to '編集', edit_article_path(article)
+      td
+        = link_to '削除', article_path(article), method: :delete, data: { confirm: '本当にいいですか?'}

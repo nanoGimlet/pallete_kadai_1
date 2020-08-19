@@ -1,0 +1,16 @@
+= link_to '一覧に戻る', articles_path
+|  | 
+= link_to '記事を編集', edit_article_path(article)
+p
+  strong
+    | タイトル：
+  = article.title
+p
+  strong
+    | 本文：
+  = article.text
+h2
+  | コメント欄
+  = render article.comments
+
+= link_to 'コメントする', new_article_comment_path(article)
