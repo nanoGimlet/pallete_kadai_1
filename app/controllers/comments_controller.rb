@@ -7,11 +7,11 @@ class CommentsController < ApplicationController
   def create
     @comment = article.comments.new(comment_params)
     if @comment.save
-      flash[:success] = "コメントを投稿しました"
+      flash[:success] = :"コメントを投稿しました"
       redirect_to article_path(article)
     else
-      render 'show'
-      flash.now[:error] = "コメントを投稿できませんでした"
+      render 'new'
+      flash.now[:error] = :"コメントを投稿できませんでした"
     end
   end
 
@@ -20,28 +20,28 @@ class CommentsController < ApplicationController
 
   def update
     if comment.update(comment_params)
-      flash[:success] = "コメントを更新しました"
+      flash[:success] = :"コメントを更新しました"
       redirect_to article_path(article)
     else
-      render 'show'
-      flash.now[:error] = "コメントを更新できませんでした"
+      render 'edit'
+      flash.now[:error] = :"コメントを更新できませんでした"
     end
   end
 
 
   def destroy
     if comment.destroy
-      flash[:success] = "コメントを削除しました"
+      flash[:success] = :"コメントを削除しました"
       redirect_to article_path(article)
     else
-      render 'show'
-      flash.now[:error] = "コメントを削除できませんでした"
+      render 'new'
+      flash.now[:error] = :"コメントを削除できませんでした"
     end
   end
 
   private
     def comment_params
-      params.require(:comment).permit(:commenter, :body)
+      params.require(:comment).permit(:username, :body)
     end
 
     def article
@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
     helper_method :article
 
     def comment
-      @comment ||= article.comments.find(params[:id])
+      @comment ||= Comment.find(params[:id])
     end
     helper_method :comment
 end

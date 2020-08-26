@@ -20,12 +20,12 @@ class ArticlesController < ApplicationController
 
         # DBに登録できた場合
         if @article.save
-            flash[:success] = "記事を投稿しました"
+            flash[:success] = :"記事を投稿しました"
             redirect_to @article
         #DBに登録できなかった場合
         else
             render 'new'
-            flash.now[:error] = "記事を投稿できませんでした"
+            flash.now[:error] = :"記事を投稿できませんでした"
         end
     end
 
@@ -37,23 +37,23 @@ class ArticlesController < ApplicationController
     def update
         # DBに登録できた場合
         if article.update(article_params)
-            flash[:success] = "記事を更新しました"
+            flash[:success] = :"記事を更新しました"
             redirect_to article
         # DBに登録できなかった場合
         else
             render 'edit'
-            flash.now[:error] = "記事を更新できませんでした" 
+            flash.now[:error] = :"記事を更新できませんでした" 
         end
     end
 
     # 記事の削除
     def destroy
         if article.destroy
-            flash[:success] = "記事を削除しました"
+            flash[:success] = :"記事を削除しました"
             redirect_to articles_path
         else
             render 'index'
-            flash.now[:error] = "記事を削除できませんでした"
+            flash.now[:error] = :"記事を削除できませんでした"
         end
     end
     
