@@ -1,8 +1,9 @@
 p
-  | 発言者：
+  = Comment.human_attribute_name(:username)
+  | :
   = comment.username
 p
-  | コメント：
+  = Comment.human_attribute_name(:body)
   = comment.body
 p
   = link_to 'コメント編集', edit_article_comment_path(comment.article, comment)

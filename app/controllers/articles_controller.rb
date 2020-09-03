@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
             redirect_to @article
         #DBに登録できなかった場合
         else
-            render 'new'
+            render :new
             flash.now[:error] = :"記事を投稿できませんでした"
         end
     end
@@ -41,7 +41,7 @@ class ArticlesController < ApplicationController
             redirect_to article
         # DBに登録できなかった場合
         else
-            render 'edit'
+            render :edit
             flash.now[:error] = :"記事を更新できませんでした" 
         end
     end
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
             flash[:success] = :"記事を削除しました"
             redirect_to articles_path
         else
-            render 'index'
+            render :index
             flash.now[:error] = :"記事を削除できませんでした"
         end
     end

@@ -1,8 +1,14 @@
 ja:
-    activerecord:
-        models:
-            article: 記事
+  activerecord:
+    models:
+      article: 記事
+      comment: コメント
+
     attributes:
-        article:
-            title: タイトル
-            text: 本文
+      article:
+        title: タイトル
+        text: 本文
+    
+      comment:
+        username: ユーザー
+        body: コメント

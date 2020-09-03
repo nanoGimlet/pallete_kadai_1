@@ -3,11 +3,13 @@
 = link_to '記事を編集', edit_article_path(article)
 p
   strong
-    | タイトル：
+  = Article.human_attribute_name(:title)
+  | : 
   = article.title
 p
   strong
-    | 本文：
+  = Article.human_attribute_name(:text)
+  | :
   = article.text
 h2
   | コメント欄

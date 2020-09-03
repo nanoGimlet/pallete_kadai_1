@@ -1,12 +1,12 @@
 = form_with(model: [article, comment], local: true) do |form|
   = render 'shared/error_messages', object: form.object
   p
-  | 発言者
+  = Comment.human_attribute_name(:username)
   = form.label :username
     br
     = form.text_field :username
   p
-  | コメント
+  = Comment.human_attribute_name(:body)
   = form.label :body
     br
     = form.text_area :body

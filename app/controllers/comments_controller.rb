@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       flash[:success] = :"コメントを投稿しました"
       redirect_to article_path(article)
     else
-      render 'new'
+      render :new
       flash.now[:error] = :"コメントを投稿できませんでした"
     end
   end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
       flash[:success] = :"コメントを更新しました"
       redirect_to article_path(article)
     else
-      render 'edit'
+      render :edit
       flash.now[:error] = :"コメントを更新できませんでした"
     end
   end
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
       flash[:success] = :"コメントを削除しました"
       redirect_to article_path(article)
     else
-      render 'new'
+      render :new
       flash.now[:error] = :"コメントを削除できませんでした"
     end
   end
