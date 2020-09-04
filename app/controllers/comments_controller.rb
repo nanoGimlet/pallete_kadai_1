@@ -54,3 +54,4 @@ class CommentsController < ApplicationController
     end
     helper_method :comment
 end
+  
