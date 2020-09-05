@@ -1,16 +1,14 @@
 = form_with model: article, local: true do |form|
   = render 'shared/error_messages', object: form.object
   p
-  = Article.human_attribute_name(:title)
-  = form.label :title
+    = form.label :title
     br
     = form.text_field :title
   
   p
-  = Article.human_attribute_name(:text)
-  = form.label :text
+    = form.label :text
     br
     = form.text_area :text
   
   p
-  = form.submit
+    = form.submit

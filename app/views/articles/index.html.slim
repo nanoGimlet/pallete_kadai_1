@@ -3,11 +3,11 @@ h1
 table
   tr
     th
-    = Article.human_attribute_name(:title)
+      = Article.human_attribute_name(:title)
     th
-    = Article.human_attribute_name(:text)
+      = Article.human_attribute_name(:text)
     th colspan="2"
-    = link_to '新しい記事を作成', new_article_path
+      = link_to '新しい記事を作成', new_article_path
   - @articles.each do |article|
     tr
       td
