@@ -1,0 +1,18 @@
+= link_to '一覧に戻る', articles_path
+|  | 
+= link_to '記事を編集', edit_article_path(article)
+p
+  strong
+    = Article.human_attribute_name(:title)
+    | : 
+    = article.title
+p
+  strong
+    = Article.human_attribute_name(:text)
+    | :
+    = article.text
+h2
+  | コメント欄
+  = render article.comments
+
+= link_to 'コメントする', new_article_comment_path(article)

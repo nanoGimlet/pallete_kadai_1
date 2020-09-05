@@ -1,0 +1,11 @@
+p
+  = Comment.human_attribute_name(:username)
+  | :
+  = comment.username
+p
+  = Comment.human_attribute_name(:body)
+  = comment.body
+p
+  = link_to 'コメント編集', edit_article_comment_path(comment.article, comment)
+  | |
+  = link_to 'コメント削除', [comment.article, comment], method: :delete, data: { confirm: '本当にいいですか？' }

@@ -1,0 +1,12 @@
+= form_with(model: [article, comment], local: true) do |form|
+  = render 'shared/error_messages', object: form.object
+  p
+    = form.label :username
+    br
+    = form.text_field :username
+  p
+    = form.label :body
+    br
+    = form.text_area :body
+  p
+    = form.submit
